@@ -7,6 +7,7 @@ import { store } from './Store';
 
 import NavBar from './components/navbar/NavBarComponent'
 import LoginComponent from './components/login/LoginContainer';
+import UserAdminComponent from './components/admin/UserAdminContainer';
 
 const App: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ const App: React.FC = () => {
             <img src={logo} className="App-logo" alt="logo" />
             <Switch>
               <Route path='/login' component={LoginComponent} />
-
+              <Route path='/admin' component={UserAdminComponent} />
             </Switch>
           </header>
 

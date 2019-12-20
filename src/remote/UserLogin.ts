@@ -1,6 +1,6 @@
 import { apiLogin } from './UserLoginClient'
 
-export async function userLogin(username:string, password:string){
+export async function userLogin(username: string, password: string) {
     const credentials = {
         username,
         password
@@ -18,8 +18,27 @@ export async function userLogin(username:string, password:string){
                 data: undefined
             }
         }
-    } catch(e) {
+    } catch (e) {
         console.log(e)
         throw new Error('Something Went Wrong')
     }
-} 
+}
+
+export async function apiGetAllUsers() {
+    try {
+        const response = await apiLogin.get('/users')
+        if (response.status === 200) {
+            return {
+                status: response.status,
+                body: response.data
+            }
+        } else {
+            return {
+                status: response.status,
+                body: undefined
+            }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
