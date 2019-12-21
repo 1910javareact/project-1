@@ -24,6 +24,25 @@ export async function userLogin(username: string, password: string) {
     }
 }
 
+export async function apiGetAllReimbursements() {
+    try {
+        const response = await apiLogin.get('/reimbursement')
+        if (response.status === 200) {
+            return {
+                status: response.status,
+                body: response.data
+            }
+        } else {
+            return {
+                status: response.status,
+                body: undefined
+            }
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 export async function apiGetAllUsers() {
     try {
         const response = await apiLogin.get('/users')

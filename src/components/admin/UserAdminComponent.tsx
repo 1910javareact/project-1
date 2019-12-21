@@ -2,21 +2,15 @@ import React, { SyntheticEvent } from 'react';
 import { Table, Button } from 'reactstrap'
 import { User } from '../../models/user';
 import { store } from '../../Store';
-//import { useStore } from 'react-redux';
-
-
 
 interface IUserAdminComponentProps {
-    users: User[]
-    getAllUsers: () => void
-
+    getAllUsers: () => void,
 }
 
 export class UserAdminComponent extends React.Component<IUserAdminComponentProps, any> {
     constructor(props: any) {
         super(props)
         this.state = {
-            users: []
 
         }
     }
@@ -26,31 +20,11 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
         this.props.getAllUsers()
     }
 
-    renderHelper = () => {
-        let usersArray = store.getState().users.users
-        let arrLen = usersArray.length
-                for (let i = 0; i < arrLen; i++){
-                    return <tr>
-                        <td>
-                            {usersArray[i].name}
-                        </td>
-                        <td>
-                            {usersArray[i].userName}
-                        </td>
-                        <td>
-                            {usersArray[i].accountBalance}
-                        </td>
-                        <td>
-                            {usersArray[i].socialCredit}
-                        </td>
-                    </tr>
-                }
-    }
+
 
     render() {
         let usersArray = store.getState().users.users
         if (usersArray.length > 1) {
-            
             return (
                 <div>
 
@@ -58,7 +32,6 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
                     <Table bordered>
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Name</th>
                                 <th>Username</th>
                                 <th>Account Balance</th>
@@ -67,20 +40,17 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
                             </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        <td>
-                            {usersArray[1].name}
-                        </td>
-                        <td>
-                            {usersArray[1].userName}
-                        </td>
-                        <td>
-                            {usersArray[1].accountBalance}
-                        </td>
-                        <td>
-                            {usersArray[1].socialCredit}
-                        </td>
-                    </tr>
+                            {usersArray.map((e: User) => {
+                                return <tr>
+                                    <td>{e.name}</td>
+                                    <td>{e.username}</td>
+                                    <td>{e.accountBalance}</td>
+                                    <td>{e.socialCredit}</td>
+                                    <td>{e.role.map((e:any)=>{
+                                        return e + ', '
+                                    })}</td>
+                                </tr>
+                            })}
                         </tbody>
                     </Table>
 
@@ -97,9 +67,6 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
         }
     }
 }
-
-
-
 
 export default UserAdminComponent;
 
@@ -142,4 +109,24 @@ export default UserAdminComponent;
         //             <td>{userArray[i].role.toString()}</td>
         //         </tr>
         //     )
+        // }
+        // renderHelper = () => {
+        //     let usersArray = store.getState().users.users
+        //     let arrLen = usersArray.length
+        //     for (let i = 0; i < arrLen; i++) {
+        //         return <tr>
+        //             <td>
+        //                 {usersArray[i].name}
+        //             </td>
+        //             <td>
+        //                 {usersArray[i].userName}
+        //             </td>
+        //             <td>
+        //                 {usersArray[i].accountBalance}
+        //             </td>
+        //             <td>
+        //                 {usersArray[i].socialCredit}
+        //             </td>
+        //         </tr>
+        //     }
         // }
