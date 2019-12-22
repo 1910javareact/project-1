@@ -9,6 +9,8 @@ import NavBar from './components/navbar/NavBarComponent'
 import LoginComponent from './components/login/LoginContainer';
 import UserAdminComponent from './components/admin/UserAdminContainer';
 import ViewReimbursementComponent from './components/admin/ViewReimbursementContainer'
+import SaveOneUserComponent from './components/admin/SaveUserContainer'
+import SumbitReimbursementComponent from './components/user/SubmitReimbursementContainer'
 const App: React.FC = () => {
   return (
     <div className="App">
@@ -24,6 +26,8 @@ const App: React.FC = () => {
               <Route path='/login' component={LoginComponent} />
               <Route path='/admin' component={UserAdminComponent} />
               <Route path='/reimbursements' component={ViewReimbursementComponent} />
+              <Route path='/save-one-user' component={SaveOneUserComponent} />
+              <Route path='/submit-reimbursement' component={SumbitReimbursementComponent} />
             </Switch>
           </header>
 

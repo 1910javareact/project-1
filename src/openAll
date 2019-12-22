@@ -17,3 +17,6 @@ code *.tsx
 cd ..
 cd navbar
 code *.tsx
+cd ..
+cd user
+code *.tsx

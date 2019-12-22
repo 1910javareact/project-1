@@ -1,11 +1,44 @@
-import { IUserAdminState } from '.'
+import { IUserAdminState, ISaveUserState, ISubmitReimbursementState } from '.'
 import { userAdminTypes } from '../action-mappers/UserAdminActionMapper'
 import { User } from '../models/user'
 import { Reimbursement } from '../models/reimbursement'
 
 const initialState: IUserAdminState = {
     users: [new User(0,'','','',0,0,[])],
-    reimbursements: [new Reimbursement(0,0,0,'',0)]
+    reimbursements: [new Reimbursement(0,0,0,'',0)],
+    
+}
+
+const saveUserState: ISaveUserState = {
+    newUser: new User(0,'','','',0,0,[])
+}
+
+const submitReimbursementState: ISubmitReimbursementState = {
+    reimbursement: new Reimbursement(0,0,0,'',0)
+}
+
+export const submitReimbursementReducer = (state = submitReimbursementState, action:any) => {
+    switch(action.type){
+        case userAdminTypes.SAVE_ONE_REIMBURSEMENT:{
+            return {
+                ...state,
+                reimbursement: action.payload.reimbursement
+            }
+        } default:
+            return state
+    }
+}
+
+export const newUserReducer = (state = saveUserState, action:any) => {
+    switch(action.type){
+        case userAdminTypes.SAVE_ONE_USER:{
+            return{
+                ...state,
+                newUser: action.payload.newUser
+            }
+        } default:
+            return state
+    }
 }
 
 export const reimbursementReducer = (state = initialState, action:any) => {
