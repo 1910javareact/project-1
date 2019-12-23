@@ -1,17 +1,18 @@
 import React, { SyntheticEvent } from 'react';
-import { Table, Button } from 'reactstrap'
+import { Table, Button, Form, Label, Input } from 'reactstrap'
 import { User } from '../../models/user';
 import { store } from '../../Store';
 
 interface IUserAdminComponentProps {
-    getAllUsers: () => void,
+    getAllUsers: () => void
 }
 
 export class UserAdminComponent extends React.Component<IUserAdminComponentProps, any> {
     constructor(props: any) {
         super(props)
         this.state = {
-
+            userById: 0
+            
         }
     }
 
@@ -20,15 +21,14 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
         this.props.getAllUsers()
     }
 
-
-
+    
     render() {
         let usersArray = store.getState().users.users
         if (usersArray.length > 1) {
             return (
                 <div>
-
-                    <Button onClick={this.submitGetAllUsers}>View Users</Button>
+                    <h2>Users</h2>
+                    <Button onClick={this.submitGetAllUsers}>Display</Button>
                     <Table bordered>
                         <thead>
                             <tr>
@@ -43,7 +43,7 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
                             {usersArray.map((e: User) => {
                                 return <tr>
                                     <td>{e.name}</td>
-                                    <td>{e.username}</td>
+                                    <td>{e.password}</td>
                                     <td>{e.accountBalance}</td>
                                     <td>{e.socialCredit}</td>
                                     <td>{e.role.map((e:any)=>{
@@ -53,15 +53,15 @@ export class UserAdminComponent extends React.Component<IUserAdminComponentProps
                             })}
                         </tbody>
                     </Table>
-
+                    
 
                 </div >
             );
         } else {
             return (
                 <div>
-
-                    <Button onClick={this.submitGetAllUsers}>View Users</Button>
+                    <h2>View Users</h2>
+                    <Button onClick={this.submitGetAllUsers}>Display</Button>
                 </div>
             )
         }

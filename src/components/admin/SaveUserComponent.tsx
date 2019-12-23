@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react'
-import { Button, Form, FormGroup, Label, Input, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem  } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { User } from '../../models/user'
 
 interface ISaveUserComponentProps {
@@ -84,6 +84,7 @@ export class SaveUserComponent extends React.Component<ISaveUserComponentProps, 
     render() {
         return (
             <div>
+                <h2>Save User</h2>
                 <Form inline onSubmit={this.submitSaveOneUser}>
                     <FormGroup>
                         <Label for="nameInput" hidden>Name</Label>
@@ -110,19 +111,12 @@ export class SaveUserComponent extends React.Component<ISaveUserComponentProps, 
                         <Input value={this.state.socialCredit} onChange={this.updateSocialCredit} type="password" name="passwordInput" id="passwordInput" placeholder="Social Credit Score" />
                     </FormGroup>
                     {' '}
-                    <UncontrolledDropdown>
-                        <DropdownToggle caret>
-                        Roles:
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem onClick={this.updateUserRole}>User</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem onClick={this.updateFMRole}>Finance Manager</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem onClick={this.updateAdminRole}>Admin</DropdownItem>
-                        </DropdownMenu>
-                    </UncontrolledDropdown>
 
+                    <Button onClick={this.updateUserRole}>User</Button >
+                    <Button onClick={this.updateFMRole}>Finance Manager</Button >
+                    <Button onClick={this.updateAdminRole}>Admin</Button >
+                    
+                    <br></br>
                     <Button>Submit</Button>
                 </Form>
                 <p>{this.props.newUser.name}</p>

@@ -20,3 +20,5 @@ code *.tsx
 cd ..
 cd user
 code *.tsx
+cd ..
+code *.tsx

@@ -7,10 +7,10 @@ import { store } from './Store';
 
 import NavBar from './components/navbar/NavBarComponent'
 import LoginComponent from './components/login/LoginContainer';
-import UserAdminComponent from './components/admin/UserAdminContainer';
-import ViewReimbursementComponent from './components/admin/ViewReimbursementContainer'
-import SaveOneUserComponent from './components/admin/SaveUserContainer'
-import SumbitReimbursementComponent from './components/user/SubmitReimbursementContainer'
+
+import UserViewComponent from './components/UserViewComponent';
+import AdminViewComponent from './components/AdminViewComponent';
+import FMViewComponent from './components/FMViewComponent';
 const App: React.FC = () => {
   return (
     <div className="App">
@@ -24,14 +24,11 @@ const App: React.FC = () => {
             <img src={logo} className="App-logo" alt="logo" />
             <Switch>
               <Route path='/login' component={LoginComponent} />
-              <Route path='/admin' component={UserAdminComponent} />
-              <Route path='/reimbursements' component={ViewReimbursementComponent} />
-              <Route path='/save-one-user' component={SaveOneUserComponent} />
-              <Route path='/submit-reimbursement' component={SumbitReimbursementComponent} />
+              <Route path='/user' component={UserViewComponent} />
+              <Route path='/admin' component={AdminViewComponent} />
+              <Route path='/finance' component={FMViewComponent} />
             </Switch>
           </header>
-
-
 
         </Router>
       </Provider>

@@ -1,6 +1,67 @@
 import { apiLogin } from './UserLoginClient'
 
+export async function apiGetReByAuth(reAuth:number){
+    const author = reAuth
+    try {
+        const response = await apiLogin.get('/reimbursement/byUser/' + author)
+        if (response.status === 200) {
+            return {
+                status: response.status,
+                body: response.data
+            }
+        } else {
+            return {
+                status: response.status,
+                data: undefined
+            }
+        }
+    } catch (e) {
+        console.log(e)
+        throw new Error('Something Went Wrong')
+    }
+}
 
+export async function apiGetReById(reId:number) {
+    const reimbursementId = reId
+    try {
+        const response = await apiLogin.get('/reimbursement/byStatus/' + reimbursementId)
+        if (response.status === 200) {
+            return {
+                status: response.status,
+                body: response.data
+            }
+        } else {
+            return {
+                status: response.status,
+                data: undefined
+            }
+        }
+    } catch (e) {
+        console.log(e)
+        throw new Error('Something Went Wrong')
+    }
+}
+
+export async function apiGetUserById(uid:number) {
+    const id =  uid 
+    try {
+        const response = await apiLogin.get('/users/' + id)
+        if (response.status === 200) {
+            return {
+                status: response.status,
+                body: response.data
+            }
+        } else {
+            return {
+                status: response.status,
+                data: undefined
+            }
+        }
+    } catch (e) {
+        console.log(e)
+        throw new Error('Something Went Wrong')
+    }
+}
 
 export async function userLogin(username: string, password: string) {
     const credentials = {

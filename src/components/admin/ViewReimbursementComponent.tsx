@@ -11,8 +11,22 @@ export class ViewReimbursementComponent extends React.Component<IViewComponentPr
     constructor(props: any) {
         super(props)
         this.state = {
+            idSearch: 0,
+            authorSearch: 0
 
         }
+    }
+    updateById = (e: any) => {
+        this.setState({
+            ...this.state,
+            idSearch: e.target.value
+        })
+    }
+    updateByAuthor = (e: any) => {
+        this.setState({
+            ...this.state,
+            authorSearch: e.target.value
+        })
     }
 
     submitViewReimbursements = async (e: SyntheticEvent) => {
@@ -25,7 +39,8 @@ export class ViewReimbursementComponent extends React.Component<IViewComponentPr
         if (reArray.length > 1) {
             return (
                 <div>
-                    <Button onClick={this.submitViewReimbursements}>View Reimbursements</Button>
+                    <h2>Reimbursements</h2>
+                    <Button onClick={this.submitViewReimbursements}>Display</Button>
                     <Table bordered>
                         <thead>
                             <tr>
@@ -48,13 +63,14 @@ export class ViewReimbursementComponent extends React.Component<IViewComponentPr
                             })}
                         </tbody>
                     </Table>
+                   
                 </div>
             )
         } else {
             return (
                 <div>
-
-                    <Button onClick={this.submitViewReimbursements}>View Reimbursements</Button>
+                    <h2>View Reimbursements</h2>
+                    <Button onClick={this.submitViewReimbursements}>Display</Button>
                 </div>
             )
         }

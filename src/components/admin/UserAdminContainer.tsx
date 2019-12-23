@@ -6,7 +6,8 @@ import { getAllUsers } from '../../action-mappers/UserAdminActionMapper'
 const mapStateToProps = (state:IUserAdminState) => {
 
     return {
-        users: state.users
+        users: state.users,
+        
     }
 }
 
